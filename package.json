@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint .",
-    "lint": "eslint ."
+    "test": "node ./node_modules/eslint/bin/eslint.js .",
+    "lint": "node ./node_modules/eslint/bin/eslint.js ."
   },
   "repository": {
     "type": "git",
