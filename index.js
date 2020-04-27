@@ -29,6 +29,6 @@ app.get('/:id/ison', (req, res) => {
 })
 
 
-app.listen(config.port || 80);
+app.listen(config.port || 8080);
 
 module.exports = app;
