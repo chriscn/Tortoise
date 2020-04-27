@@ -12,7 +12,10 @@ app.use(express.urlencoded({ extended: false}));
 app.use('/', id);
 
 app.use((req, res, next) => {
-    res.status(404).send("Sorry can't find that.");
+    res.status(404).json({
+        "status": "not-found",
+        "error": 404
+    });
 });
 
 app.listen(config.port || 8080);
