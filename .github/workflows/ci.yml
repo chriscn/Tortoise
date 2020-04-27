@@ -24,6 +24,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Copy default config
+        uses: canastro/copy-action@0.0.2
+        with:
+          source: "config-sample.json"
+          target: "config.json"
+
       - name: Cache Node Modules
         uses: actions/cache@v1
         id: cache
