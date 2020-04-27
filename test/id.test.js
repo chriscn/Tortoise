@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../index.js');
+const app = require('../app/app');
 const nanoid = require('nanoid');
 
 const id = nanoid.nanoid(16);
@@ -22,3 +22,12 @@ describe('sending fake ID', () => {
         return true;
     });
 })
+
+describe('id not in system', function () {
+    it('should get status for unknown id', function () {
+        return false;
+    });
+    it('should delete unknown id', function () {
+
+    });
+});
