@@ -72,7 +72,7 @@ router.get('/:id/', (req, res) => {
 
     if (status[id] == undefined || status[id] != (true || false)) {
         res.json({
-            "error": "not-found",
+            "status": "not-found",
             "id": id
         })
     } else {
