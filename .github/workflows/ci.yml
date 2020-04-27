@@ -1,7 +1,12 @@
 name: Node.js CI
 
 on:
-  [push, pull_request]:
+  push:
+    branches:
+      - develop
+      - feature/**
+      - hotfix/**
+  pull_request:
     branches:
       - develop
       - feature/**
