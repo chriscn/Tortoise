@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../index.js');
+const app = require('../app/app');
 
 describe('GET /', function () {
     it('return JSON and 200 response', function () {
@@ -9,3 +9,11 @@ describe('GET /', function () {
             .expect(200)
     })
 })
+
+describe('GET 404', function () {
+    it('should return 404 for unknown page', function () {
+        return request(app)
+            .get('/foo/bar')
+            .expect(404)
+    });
+});
