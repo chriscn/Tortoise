@@ -21,13 +21,21 @@ app.get('/', (req, res) => {
 
 app.get('/:id/ison', (req, res) => {
     let id = req.params.id;
-    if (config.debug) console.log(`Got ison with id ${id}, from ${req.ip}`);
 
     status[id] = true;
 
-    res.send("Well Done!");
+    res.json({
+        "success": true,
+        "id": id
+    })
 })
 
+app.get('/:id/', (req, res) => {
+   let id = req.params.id;
+
+   res.json()
+
+});
 
 app.listen(config.port || 8080);
 
