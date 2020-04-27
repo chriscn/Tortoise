@@ -8,10 +8,7 @@ on:
       - hotfix/**
   pull_request:
     branches:
-      - develop
-      - feature/**
-      - hotfix/**
-      - master
+      - *
 
 jobs:
   build:
