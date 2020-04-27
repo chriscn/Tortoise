@@ -1,9 +1,5 @@
 const express = require('express');
-const axios = require('axios').default;
-
 const app = express();
-const config = require('../config.json');
-const package = require('../package.json');
 
 const id = require('./routes/id');
 
@@ -18,6 +14,6 @@ app.use((req, res) => {
     });
 });
 
-app.listen(config.port || 8080);
+app.listen(8080);
 
 module.exports = app;

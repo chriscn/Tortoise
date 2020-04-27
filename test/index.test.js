@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../app/app');
 
 describe('GET /', function () {
-    it('return JSON and 200 response', function () {
+    it('should return JSON and 200 response', function () {
         return request(app)
             .get('/')
             .expect('Content-Type', /json/)

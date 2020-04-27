@@ -16,6 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Copy default config
+          uses: canastro/copy-action@0.0.2
+          with:
+            source: "config-sample.json"
+            target: "config.json"
+
       - name: Cache Node Modules
         uses: actions/cache@v1
         id: cache
@@ -48,4 +54,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: chriscn/tortoise
           tag_with_ref: true
-  
+
