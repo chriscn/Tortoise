@@ -2,10 +2,10 @@
   "name": "tortoise",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "app/app.js",
   "scripts": {
     "test": "mocha --exit",
-    "start": "./index.js"
+    "start": "app/app.js"
   },
   "directories": {
     "test": "./test"
