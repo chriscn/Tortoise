@@ -44,7 +44,7 @@ jobs:
         with:
           args: build -t chriscn/tortoise .
       - name: docker login
-        uses: actions/docker/cli@master
+        uses: actions/docker/login@master
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
