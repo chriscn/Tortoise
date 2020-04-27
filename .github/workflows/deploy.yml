@@ -2,9 +2,8 @@ name: Deploy to Docker
 
 on:
   push:
-    - master
-  pull_request:
-    - master
+    branches:
+      - master
 
 jobs:
   test:
