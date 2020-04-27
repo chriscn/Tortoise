@@ -54,4 +54,3 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: chriscn/tortoise
           tag_with_ref: true
-
