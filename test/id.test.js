@@ -51,6 +51,13 @@ describe('id not in system', function () {
             });
     });
     it('should delete unknown id', function () {
-
+        return request(app)
+            .get(`${id}`)
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .expect({
+                "error": "not-found",
+                "id": id
+            });
     });
 });
