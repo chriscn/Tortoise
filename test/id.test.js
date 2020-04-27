@@ -25,7 +25,7 @@ describe('sending fake ID', () => {
 
 describe('id not in system', function () {
     it('should get status for unknown id', function () {
-        return false;
+        throw new Error("hello, world");
     });
     it('should delete unknown id', function () {
 
