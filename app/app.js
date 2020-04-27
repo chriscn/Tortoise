@@ -7,20 +7,12 @@ const package = require('../package.json');
 
 const id = require('./routes/id');
 
-let status = [];
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
-app.use('/id', id);
+app.use('/', id);
 
-
-app.get('/', (req, res) => {
-    res.json({
-        "currently_stored": status.length,
-        "currently_on": (status.filter(v => v).length),
-        "currently_off": (status.filter(v => !v).length),
-        "statuses": status
-    });
+app.use((req, res, next) => {
+    res.status(404).send("Sorry can't find that.");
 });
 
 app.listen(config.port || 8080);
