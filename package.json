@@ -5,8 +5,7 @@
   "main": "app/app.js",
   "scripts": {
     "test": "mocha --exit",
-    "start": "node app/app.js",
-    "lint": "eslint ."
+    "start": "node app/app.js"
   },
   "directories": {
     "test": "./test"
