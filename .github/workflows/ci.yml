@@ -41,8 +41,3 @@ jobs:
         run: npm test
         env:
           CI: true
-
-      - name: Run npm lint
-        run: npm run lint
-        env:
-          CI: true
