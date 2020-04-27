@@ -46,17 +46,17 @@ describe('id not in system', function () {
             .expect(200)
             .expect('Content-Type', /json/)
             .expect({
-                "error": "not-found",
+                "status": "not-found",
                 "id": id
             });
     });
     it('should delete unknown id', function () {
         return request(app)
-            .get(`${id}`)
+            .get(`/${id}/delete`)
             .expect(200)
             .expect('Content-Type', /json/)
             .expect({
-                "error": "not-found",
+                "status": "not-found",
                 "id": id
             });
     });
