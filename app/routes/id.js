@@ -55,10 +55,17 @@ router.get('/:id/isoff', (req, res) => {
 router.get('/:id/', (req, res) => {
     let id = req.params.id;
 
-    res.json({
-        "id": id,
-        "status": (status[id] ? "on" : "off")
-    });
+    if (status[id] == undefined || status[id] != (true || false)) {
+        res.json({
+            "error": "not-found",
+            "id": id
+        })
+    } else {
+        res.json({
+            "id": id,
+            "status": (status[id] ? "on" : "off")
+        });
+    }
 });
 
 router.get('/:id/delete', (req, res) => {
