@@ -11,22 +11,29 @@ router.get('/:id/ison', (req, res) => {
 
     status[id] = true;
 
-    axios.post(`http://${config.notification_server.ip}:${config.notification_server.port}/${id}`, {
-        "service": "switch-service",
-        "characteristic": "On",
-        "value": true
-    }).then(post_res => {
-        res.json({
-            "status": "success",
+    if (config.notification_server.enabled) {
+        axios.post(`http://${config.notification_server.ip}:${config.notification_server.port}/${id}`, {
+            "service": "switch-service",
+            "characteristic": "On",
+            "value": true
+        }).then(post_res => {
+            res.json({
+                "status": "success",
+                "id": id,
+                "response": post_res['body']
+            });
+        }).catch(post_err => {
+            res.json({
+                "status": "error",
+                "reason": post_err.toString()
+            });
+        });
+    } else {
+        res.send({
             "id": id,
-            "response": post_res['body']
+            "status": "success"
         });
-    }).catch(post_err => {
-        res.json({
-            "status": "error",
-            "reason": post_err.toString()
-        });
-    });
+    }
 });
 
 router.get('/:id/isoff', (req, res) => {
@@ -34,22 +41,30 @@ router.get('/:id/isoff', (req, res) => {
 
     status[id] = false;
 
-    axios.post(`http://${config.notification_server.ip}:${config.notification_server.port}/${id}`, {
-        "service": "switch-service",
-        "characteristic": "On",
-        "value": false
-    }).then(post_res => {
-        res.json({
-            "status": "success",
+    if (config.notification_server.enabled) {
+
+        axios.post(`http://${config.notification_server.ip}:${config.notification_server.port}/${id}`, {
+            "service": "switch-service",
+            "characteristic": "On",
+            "value": false
+        }).then(post_res => {
+            res.json({
+                "status": "success",
+                "id": id,
+                "response": post_res['body']
+            });
+        }).catch(post_err => {
+            res.json({
+                "status": "error",
+                "reason": post_err.toString()
+            });
+        });
+    } else {
+        res.send({
             "id": id,
-            "response": post_res['body']
+            "status": "success"
         });
-    }).catch(post_err => {
-        res.json({
-            "status": "error",
-            "reason": post_err.toString()
-        });
-    });
+    }
 });
 
 router.get('/:id/', (req, res) => {
