@@ -2,13 +2,17 @@ const express = require('express');
 const axios = require('axios').default;
 
 const app = express();
-const config = require('./config.json');
-const package = require('./package.json');
+const config = require('../config.json');
+const package = require('../package.json');
+
+const id = require('./routes/id');
 
 let status = [];
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
+app.use('/id', id);
+
 
 app.get('/', (req, res) => {
     res.json({
@@ -17,24 +21,6 @@ app.get('/', (req, res) => {
         "currently_off": (status.filter(v => !v).length),
         "statuses": status
     });
-});
-
-app.get('/:id/ison', (req, res) => {
-    let id = req.params.id;
-
-    status[id] = true;
-
-    res.json({
-        "success": true,
-        "id": id
-    })
-})
-
-app.get('/:id/', (req, res) => {
-   let id = req.params.id;
-
-   res.json()
-
 });
 
 app.listen(config.port || 8080);
