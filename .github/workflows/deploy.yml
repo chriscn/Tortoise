@@ -2,9 +2,8 @@ name: Deploy to Docker
 
 on:
   push:
-    - master
-  pull_request:
-    - master
+    branches:
+      - master
 
 jobs:
   test:
@@ -14,41 +13,39 @@ jobs:
       matrix:
         node-version: [8.x, 10.x, 12.x]
 
-      steps:
-        - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-        - name: Cache Node Modules
-          uses: actions/cache@v1
-          id: cache
-          with:
-            path: node_modules
-            key: ${{ runner.OS }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Cache Node Modules
+        uses: actions/cache@v1
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-node-modules-${{ hashFiles('**/package-lock.json') }}
 
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v1
-          with:
-            node-version: ${{ matrix.node-version }}
-        - name: Install dependencies
-          run: npm ci
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm ci
 
-        - name: Run npm unit tests
-          run: npm test
-          env:
-            CI: true
+      - name: Run npm unit tests
+        run: npm test
+        env:
+          CI: true
   deploy:
+    needs: test
     runs-on: ubuntu-latest
 
-      steps:
-        - name: docker build
-          uses: actions/docker/cli@master
-          with:
-            args: build -t chriscn/tortoise .
-        - name: docker login
-          uses: actions/docker/cli@master
-          env:
-            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        - name: docker push
-          uses: actions/docker/cli@master
-          with:
-            args: push chriscn/tortoise
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: chriscn/tortoise
+          tag_with_ref: true
+  
