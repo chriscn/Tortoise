@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:12:arm64v8
 MAINTAINER chriscn
 
 # Create app directory
