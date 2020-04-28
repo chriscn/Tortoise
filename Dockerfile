@@ -1,7 +1,10 @@
 FROM node:12
+MAINTAINER chriscn
 
 # Create app directory
 WORKDIR /usr/src/app
+
+# Expose volume
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
