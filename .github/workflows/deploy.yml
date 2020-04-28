@@ -62,4 +62,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: chriscn/tortoise
           dockerfile: Dockerfile.arm64
+          tags: arm64
           tag_with_ref: true
