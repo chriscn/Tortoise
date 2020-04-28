@@ -19,5 +19,5 @@ VOLUME ["/usr/src/app/config/"]
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE 8182
 CMD [ "node", "app/app.js" ]
