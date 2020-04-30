@@ -83,6 +83,12 @@ router.get('/:id/', (req, res) => {
     }
 });
 
+router.get('/:id/status', (req, res) => {
+    let id = req.params.id;
+
+    res.send((status[id] ? 1 : 0));
+})
+
 router.get('/:id/delete', (req, res) => {
     let id = req.params.id;
 
