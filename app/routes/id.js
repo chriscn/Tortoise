@@ -89,7 +89,7 @@ router.get('/:id/status', (req, res) => {
     res.send((status[id] ? 1 : 0));
 })
 
-router.get('/:id/delete', (req, res) => {
+router.delete('/:id/', (req, res) => {
     let id = req.params.id;
 
     if (status[id] === undefined || status[id] == "") { // statuses do not contain that id
