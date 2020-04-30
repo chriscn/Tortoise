@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios').default;
 const router = express.Router();
-const config = require('../../config/config.json');
+const config = require('../../config.json');
 
 
 let status = [];
