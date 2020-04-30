@@ -6,7 +6,12 @@ const config = require('../config.json');
 const port = config.port || 8182;
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false}));
+
+app.use((req, res, next) => {
+   console.log(`${req.method} ${req.originalUrl} from ${req.ip}`);
+   next();
+});
+
 app.use('/', id);
 
 app.use((req, res) => {
@@ -16,11 +21,8 @@ app.use((req, res) => {
     });
 });
 
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.originalUrl} ${JSON.stringify(req.body)}`)
-    next();
-});
-
 app.listen(port);
+
+console.log(`Tortoise ready on port ${port}`);
 
 module.exports = app;
