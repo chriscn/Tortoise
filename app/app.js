@@ -16,6 +16,11 @@ app.use((req, res) => {
     });
 });
 
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.originalUrl} ${JSON.stringify(req.body)}`)
+    next();
+});
+
 app.listen(port);
 
 module.exports = app;
