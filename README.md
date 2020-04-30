@@ -38,6 +38,7 @@ I have only tested this with 'Shelly-1PM', I am sure it could work for the other
 #### Configuration file
 ```json
 {
+  "port": 8182,
   "notification_server": {
     "enabled": true,
     "ip": "",

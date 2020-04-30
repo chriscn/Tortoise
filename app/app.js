@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 
 const id = require('./routes/id');
+const config = require('../config.json');
+const port = config.port || 8182;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
@@ -14,6 +16,6 @@ app.use((req, res) => {
     });
 });
 
-app.listen(8182);
+app.listen(port);
 
 module.exports = app;
