@@ -1,5 +1,4 @@
 {
-  "port": 8182,
   "notification_server": {
     "enabled": false,
     "ip": "127.0.0.1",
