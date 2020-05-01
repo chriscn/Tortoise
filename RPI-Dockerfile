@@ -1,14 +1,16 @@
-# RPI Image
-FROM balenalib/rpi-raspbian
+FROM hypriot/rpi-iojs:1.4.1
 
-RUN apt-get update
-RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
-RUN apt-get install nodejs -y
+# Adding source files into container
+ADD src/ /src
 
-WORKDIR /usr/src/app
+# Define working directory
+WORKDIR /src
 
-COPY package*.json ./
-RUN npm ci --only=production
+# Install app dependencies
+RUN npm install
 
-COPY . .
-EXPOSE 8182
+# Open Port 80
+EXPOSE 80
+
+# Run Node.js
+CMD ["node", "app/app.js"]
