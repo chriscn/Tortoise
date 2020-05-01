@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 
 const id = require('./routes/id');
-const config = require('../config.json');
-const port = config.port || 8182;
+const port = 8182;
 
 app.use(express.json());
 
@@ -23,6 +22,6 @@ app.use((req, res) => {
 
 app.listen(port);
 
-console.log(`Tortoise ready on port ${port}`);
+console.log(`Tortoise ready on port ${port}, your Docker port may be different though.`);
 
 module.exports = app;

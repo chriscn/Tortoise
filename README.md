@@ -38,7 +38,6 @@ I have only tested this with 'Shelly-1PM', I am sure it could work for the other
 #### Configuration file
 ```json
 {
-  "port": 8182,
   "notification_server": {
     "enabled": true,
     "ip": "",
@@ -59,3 +58,16 @@ I have only tested this with 'Shelly-1PM', I am sure it could work for the other
 - Replacing *<notificationID>* with the same notificationID as you declared early
 
 You can find the *<notificationID*> under **Settings** -> **Device Info**
+
+## Docker Support
+We automatically generate a Docker image and publish it to DockerHub. All you need to do is to create a file called `config.json` wherever you like with the following information.
+```json
+{
+  "notification_server": {
+    "enabled": true,
+    "ip": "",
+    "port": 8080
+  }
+}
+```
+Then run this command `docker run -d -p 8182:8182 -v <config directory>:/usr/src/app/config --name=tortoise chriscn/tortoise`. It runs using the default port of 8182 but that can be changed at your lesiuire.

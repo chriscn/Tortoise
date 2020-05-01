@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios').default;
 const router = express.Router();
-const config = require('../../config.json');
+const config = require('../../config/config.json');
 
 
 let status = [];
@@ -42,7 +42,6 @@ router.get('/:id/isoff', (req, res) => {
     status[id] = false;
 
     if (config.notification_server.enabled) {
-
         axios.post(`http://${config.notification_server.ip}:${config.notification_server.port}/${id}`, {
             "service": "switch-service",
             "characteristic": "On",
