@@ -42,7 +42,6 @@ router.get('/:id/isoff', (req, res) => {
     status[id] = false;
 
     if (config.notification_server.enabled) {
-
         axios.post(`http://${config.notification_server.ip}:${config.notification_server.port}/${id}`, {
             "service": "switch-service",
             "characteristic": "On",
