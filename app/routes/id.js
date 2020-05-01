@@ -22,11 +22,13 @@ router.get('/:id/ison', (req, res) => {
                 "id": id,
                 "response": post_res['body']
             });
+            console.log(`Response from Notification Server ${post_res.data}`);
         }).catch(post_err => {
             res.json({
                 "status": "error",
                 "reason": post_err.toString()
             });
+            console.error(post_err);
         });
     } else {
         res.send({
