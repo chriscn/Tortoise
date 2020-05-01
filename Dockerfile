@@ -5,8 +5,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci --only=production
 
-VOLUME /usr/src/app/config/
-
 COPY . .
 
 # Open Port 80
