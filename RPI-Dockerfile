@@ -3,7 +3,7 @@ FROM balenalib/rpi-raspbian
 
 RUN apt-get update
 RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
-RUN apt install nodejs -y
+RUN apt-get install nodejs -y
 
 WORKDIR /usr/src/app
 
