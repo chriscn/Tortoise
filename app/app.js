@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 
 const id = require('./routes/id');
-const config = require('../config.json');
-const port = 8080;
+const port = 8182;
 
 app.use(express.json());
 
