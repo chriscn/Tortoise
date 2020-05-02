@@ -95,7 +95,7 @@ router.get('/:id/status', (req, res) => {
             "id": id
         })
     } else {
-        console.log(`Status request for ${id} responded with status ${status[id] ? 1 : 0)}`)
+        console.log(`Status request for ${id} responded with status ${status[id] ? 1 : 0}`);
         res.send((status[id] ? 1 : 0));
     }
 })
