@@ -89,7 +89,15 @@ router.get('/:id/', (req, res) => {
 router.get('/:id/status', (req, res) => {
     let id = req.params.id;
 
-    res.send((status[id] ? 1 : 0));
+    if (status[id] == undefined || status[id] != (true || false)) {
+        res.json({
+            "status": "not-found",
+            "id": id
+        })
+    } else {
+        console.log(`Status request for ${id} responded with status ${status[id] ? 1 : 0)}`)
+        res.send((status[id] ? 1 : 0));
+    }
 })
 
 router.delete('/:id/', (req, res) => {
