@@ -25,6 +25,14 @@ describe('sending fake ID', () => {
                 "status": "on"
             });
     });
+
+    it('should get 1 from status', function () {
+        return request(app)
+            .get(`/${id}/status`)
+            .expect(200)
+            .expect('1');
+    });
+
     it('should delete that id', function () {
         return request(app)
             .delete(`/${id}/`)
